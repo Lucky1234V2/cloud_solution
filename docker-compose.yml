@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  spring-boot-server:
+    build:
+      context: .
+      dockerfile: spring-boot-server/Dockerfile
+    ports:
+      - "8080:8080"
+
+  angular-client:
+    build:
+      context: .
+      dockerfile: angular-15-client/Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - spring-boot-server
